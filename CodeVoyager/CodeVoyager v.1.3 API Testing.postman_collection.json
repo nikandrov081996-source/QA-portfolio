@@ -1,0 +1,1743 @@
+{
+  "info": {
+    "_postman_id": "94a8e322-72b9-41b7-8a43-58d275d545b3",
+    "name": "CodeVoyager v.1.3 API Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59458939",
+    "_collection_link": "https://go.postman.co/collection/59458939-94a8e322-72b9-41b7-8a43-58d275d545b3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Регистрация и авторизация",
+      "item": [
+        {
+          "name": "Вход без 2FA с успешной авторизацией",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"test2\",\r\n    \"password\" : \"BEBRA123!\"\r\n }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/login",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Вход с 2FA (1 этап)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"test\",\r\n    \"password\" : \"aLIBABA1!\"\r\n }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/login",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Вход с 2FA (2 этап)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"challenge_token\" : \"{{json_web_token_05jx}}\",\r\n    \"code\" : \"832451\"\r\n }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/2fa/login",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "2fa",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение статуса 2FA (не включена)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token1}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/auth/2fa/status",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "2fa",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение статуса 2FA (включена)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access_token2}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/auth/2fa/status",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "2fa",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Регистрация нового пользователя",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"alpha_key\" : \"CC2D11715DC67EC12D38A3ECE6CE5082A52433B1BCB97E10\",\r\n    \"email\" :  \"new_test_account@gmail.com\",\r\n    \"password\" : \"Test123!\",\r\n    \"username\" : \"testttt\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/register",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Настройка 2FA",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"current_password\": \"aLIBABA1!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/2fa/setup",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "2fa",
+                "setup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Подтверждение настройки 2FA",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"code\": \"113001\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/2fa/confirm",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "2fa",
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Отключение 2FA",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"code\": \"501294\",\r\n  \"current_password\": \"aLIBABA1!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/2fa/disable",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "2fa",
+                "disable"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение профиля текущего пользователя",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/auth/me",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Изменение аватара пользователя",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"avatar\": \"cat\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/profile",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Изменение имени пользователя",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"display_name\": \"Новое имя\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/profile",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Смена пароля пользователя",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"current_password\": \"aLIBABA1!\",\r\n  \"new_password\": \"НОВЫЙ_ПАРОЛЬ\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/change-password",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "change-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Восстановление пароля",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"test\",\r\n  \"code\": \"123456\",\r\n  \"new_password\": \"НОВЫЙ_ПАРОЛЬ\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/auth/recover-password",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "auth",
+                "recover-password"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Управление проектами",
+      "item": [
+        {
+          "name": "Получение списка проектов пользователя",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение информации о проектах",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/dashboard",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "dashboard"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Удаление проекта",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/8b7a4bac-920d-4810-ae7d-6f3dead9ff83",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "8b7a4bac-920d-4810-ae7d-6f3dead9ff83"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение информации о конкретном проекте",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_project_id}}",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_project_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Изменение названия проекта",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"Новое название проекта\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_project_id}}",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_project_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Загрузка проекта",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Тестовый zip-архив проекта",
+                  "src": [
+                    "/C:/Users/Михаил/OneDrive/Рабочий стол/3 курс/Python +/test.zip"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/upload",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "upload"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Импорт проекта по ссылке из GitHub",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"url\": \"https://github.com/squeak784/code-voyager\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/import/github",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "import",
+                "github"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение файла из проекта",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/files/test/Customer.py",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "files",
+                "test",
+                "Customer.py"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение структуры проекта",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/structure",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "structure"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение документации проекта",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/documentation",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "documentation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Экспорт проекта",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Анализ кода",
+      "item": [
+        {
+          "name": "Анализ Python-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Python-файл",
+                  "src": [
+                    "/C:/Users/Михаил/OneDrive/Рабочий стол/3 курс/Python +/5 лаба +/ConnectableDevice.py"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/python",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "python"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Анализ C# файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "C# файл",
+                  "src": [
+                    "/C:/Users/Михаил/OneDrive/Рабочий стол/3 курс/C# +/5 семестр +/4 лаба +/ClassLibrary1/ClassLibrary1/NewWarehouse.cs"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/csharp",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "csharp"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Генерация документации Python-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Python-файл",
+                  "src": [
+                    "/C:/Users/Михаил/OneDrive/Рабочий стол/3 курс/Python +/5 лаба +/Order.py"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/python/documentation",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "python",
+                "documentation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Генерация документации C#-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "C# файл",
+                  "src": [
+                    "/C:/Users/Михаил/OneDrive/Рабочий стол/3 курс/C# +/5 семестр +/3 лаба +/ClassLibrary1/ClassLibrary1/Services/Warehouse.cs"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/csharp/documentation",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "csharp",
+                "documentation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Анализ Java-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Java файл",
+                  "src": [
+                    "/C:/Users/Михаил/Downloads/example.java"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/java",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "java"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Генерация документации Java-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Java файл",
+                  "src": [
+                    "/C:/Users/Михаил/Downloads/example.java"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/java/documentation",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "java",
+                "documentation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Анализ JavaScript-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Java Script файл",
+                  "src": [
+                    "/C:/Users/Михаил/Downloads/example.js"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/javascript",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "javascript"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Генерация документации JavaScript-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Java Script файл",
+                  "src": [
+                    "/C:/Users/Михаил/Downloads/example.js"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/javascript/documentation",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "javascript",
+                "documentation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Анализ TypeScript-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Type Script файл",
+                  "src": [
+                    "/C:/Users/Михаил/Downloads/example.ts"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/typescript",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "typescript"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Генерация документации TypeScript-файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Type Script файл",
+                  "src": [
+                    "/C:/Users/Михаил/Downloads/example.ts"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/typescript/documentation",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "typescript",
+                "documentation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Анализ кода C++",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "C++ файл",
+                  "src": [
+                    "/C:/Users/Михаил/OneDrive/Рабочий стол/2 курс +/4 семестр +/Структуры и алгоритмы обработки данных + (5)/2 лаба +/Project1/Project1/MyForm.cpp"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/cpp",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "cpp"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Генерация документации для C++",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "C++ файл",
+                  "src": [
+                    "/C:/Users/Михаил/OneDrive/Рабочий стол/2 курс +/4 семестр +/Структуры и алгоритмы обработки данных + (5)/2 лаба +/Project1/Project1/MyForm.cpp"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseurl}}/analyze/cpp/documentation",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "analyze",
+                "cpp",
+                "documentation"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Чат с ИИ и индексация проектов",
+      "item": [
+        {
+          "name": "Получение статуса индексации проекта",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_project_id}}/index",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_project_id}}",
+                "index"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Повторная индексация проекта",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_project_id}}/index",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_project_id}}",
+                "index"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Отправка вопроса по коду проекта",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id\": \"{{test_zip_python}}\",\r\n  \"question\": \"Какие функции есть в этом проекте?\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/chat",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "chat"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение истории чата",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/chat",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "chat"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Очистка истории чата",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/chat",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "chat"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Заметки",
+      "item": [
+        {
+          "name": "Получение списка заметок",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/notes",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "notes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Создание заметки",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"text\": \"Вторая новая заметка\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/notes",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "notes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Обновление заметки",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"text\": \"Обновлённый текст заметки\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/notes/{{second_note_id}}",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "notes",
+                "{{second_note_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Удаление заметки",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/notes/{{second_note_id}}",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "notes",
+                "{{second_note_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Работа с файлами и дерево проекта",
+      "item": [
+        {
+          "name": "Получение дерева проекта",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/graph",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "graph"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Чтение файла через редактор",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/workspace/file?path=test/Laptop.py",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "workspace",
+                "file"
+              ],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "test/Laptop.py"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Сохранение файла через редактор",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"path\": \"test/Laptop.py\",\r\n  \"content\": \"# Test file\\nclass Laptop:\\n    pass\\n\",\r\n  \"base_version\": \"{{base_version}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/workspace/file",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "workspace",
+                "file"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение истории изменений файла",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/workspace/history?path=test/Laptop.py",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "workspace",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "test/Laptop.py"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение содержимого конкретного файла",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/workspace/revision?path=test/Laptop.py&revision_id=7f0c7103-722c-49d4-827e-af890f1c3599",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "workspace",
+                "revision"
+              ],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "test/Laptop.py"
+                },
+                {
+                  "key": "revision_id",
+                  "value": "7f0c7103-722c-49d4-827e-af890f1c3599"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Восстановление предыдущей версии файла",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"path\": \"test/Laptop.py\",\r\n  \"revision_id\": \"7f0c7103-722c-49d4-827e-af890f1c3599\",\r\n  \"base_version\": \"{{base_version}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/workspace/restore",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "workspace",
+                "restore"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Документирование от ИИ",
+      "item": [
+        {
+          "name": "Генерация комментариев",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"path\": \"test/Laptop.py\",\r\n  \"base_version\": \"{{base_version}}\",\r\n  \"target_id\": \"293df268ca499ea31cd5cfa9\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/comments/generate",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "comments",
+                "generate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Генерация исправления комментария",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"path\": \"test/Laptop.py\",\r\n  \"base_version\": \"{{base_version}}\",\r\n  \"target_id\": \"293df268ca499ea31cd5cfa9\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/comments/repair/generate",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "comments",
+                "repair",
+                "generate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Применение исправления комментария",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"path\": \"test/Laptop.py\",\r\n  \"base_version\": \"{{base_version}}\",\r\n  \"target_id\": \"293df268ca499ea31cd5cfa9\",\r\n  \"text\": \"Описание исправленного комментария\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/comments/repair/apply",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "comments",
+                "repair",
+                "apply"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Предварительный просмотр изменений комментариев",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"path\": \"test/Laptop.py\",\r\n  \"base_version\": \"{{base_version}}\",\r\n  \"entries\": [\r\n    {\r\n      \"id\": \"293df268ca499ea31cd5cfa9\",\r\n      \"text\": \"Описание тестового комментария\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/comments/preview",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "comments",
+                "preview"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Применение изменений комментариев",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"path\": \"test/Laptop.py\",\r\n  \"base_version\": \"{{base_version}}\",\r\n  \"entries\": [\r\n    {\r\n      \"id\": \"293df268ca499ea31cd5cfa9\",\r\n      \"text\": \"Описание тестового комментария\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/comments/apply",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "comments",
+                "apply"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Проверка качества комментариев",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"path\": \"test/Laptop.py\",\r\n  \"base_version\": \"{{base_version}}\",\r\n  \"target_id\": \"e16a65cd1fa7304512ac9ccf\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/comments/quality/check",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "comments",
+                "quality",
+                "check"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение сущностей для возможного комментирования",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const response = pm.response.json();\r\n\r\nif (pm.response.code >= 200 && pm.response.code < 300) {\r\n    if (typeof response.version === \"string\" &&\r\n        response.version.length === 64) {\r\n\r\n        pm.collectionVariables.set(\r\n            \"base_version\",\r\n            response.version\r\n        );\r\n\r\n        console.log(\"base_version обновлена:\", response.version);\r\n\r\n    } else {\r\n        console.warn(\"В ответе отсутствует корректное поле version\");\r\n    }\r\n}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/comments/targets?path=test/Laptop.py",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "comments",
+                "targets"
+              ],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "test/Laptop.py"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение оценки качества комментариев",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/projects/{{test_zip_python}}/comments/quality?path=test/Laptop.py",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "projects",
+                "{{test_zip_python}}",
+                "comments",
+                "quality"
+              ],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "test/Laptop.py"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Остальное",
+      "item": [
+        {
+          "name": "Проверка корневого endpoint",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ИИ провайдер",
+      "item": [
+        {
+          "name": "Проверка статуса ИИ провайдера",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/ai/provider",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "ai",
+                "provider"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение доступных ИИ моделей",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}/ai/models",
+              "host": [
+                "{{baseurl}}"
+              ],
+              "path": [
+                "ai",
+                "models"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token2}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseurl",
+      "value": ""
+    },
+    {
+      "key": "access_token1",
+      "secret": true
+    },
+    {
+      "key": "access_token2",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_05jx",
+      "secret": true
+    },
+    {
+      "key": "test_project_id",
+      "value": ""
+    },
+    {
+      "key": "test_zip_python",
+      "value": ""
+    },
+    {
+      "key": "second_note_id",
+      "value": ""
+    },
+    {
+      "key": "base_version",
+      "value": ""
+    }
+  ]
+}
