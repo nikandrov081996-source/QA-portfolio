@@ -1,0 +1,491 @@
+<html
+        xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>Jira</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\,";
+    mso-displayed-thousand-separator:" ";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#205081" height="30">
+        <td colspan="11">
+            <img src="https://vipienovproksi.atlassian.net/images/icon-jira-family-logo.png" width="57" height="30" border="0" alt="Jira">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="11">
+            <a href="https://vipienovproksi.atlassian.net/issues/?jql=project+%3D+VJOE+ORDER+BY+cf%5B10019%5D+ASC">Jira</a>
+        </td>
+    </tr>
+    <tr>
+                <td colspan="11">
+            Отображение <strong>12</strong> задач в <strong>07/ноя/26 1:48 PM</strong>.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                                        <table id="issuetable" class="aui " border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                                                        Тип задачи
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                                                        Ключ
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                                                        Резюме
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                                                        Исполнитель
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                                                        Автор
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                                                        Приоритет
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                                                        Статус
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                                                        Решение
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                                                        Создано
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                                                        Обновлено
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                                                        Срок исполнения
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow10004" rel="10004" data-issuekey="VJOE-1" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-1" href="https://vipienovproksi.atlassian.net/browse/VJOE-1">VJOE-1</a>
+</td>
+                                            <td class="summary"><p>
+                Некорректное сообщение об ошибке при вводе почты с неправильным доменом на экране регистрации
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Lowest
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 2:29 PM </td>
+                                            <td class="updated"> 03/ноя/26 4:33 PM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10006" rel="10006" data-issuekey="VJOE-3" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-3" href="https://vipienovproksi.atlassian.net/browse/VJOE-3">VJOE-3</a>
+</td>
+                                            <td class="summary"><p>
+                Нарушение логики динамического индикатора «Английские буквы без пробелов», отвечающего за требования к надёжности пароля.
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 3:45 PM </td>
+                                            <td class="updated"> 03/ноя/26 4:33 PM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10007" rel="10007" data-issuekey="VJOE-4" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-4" href="https://vipienovproksi.atlassian.net/browse/VJOE-4">VJOE-4</a>
+</td>
+                                            <td class="summary"><p>
+                Создание проекта при импорте пустого ZIP-архива
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 4:08 PM </td>
+                                            <td class="updated"> 30/окт/26 10:38 AM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10008" rel="10008" data-issuekey="VJOE-5" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-5" href="https://vipienovproksi.atlassian.net/browse/VJOE-5">VJOE-5</a>
+</td>
+                                            <td class="summary"><p>
+                Некорректная обработка ZIP-архива, содержащего вложенный ZIP-архив
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 4:21 PM </td>
+                                            <td class="updated"> 03/ноя/26 4:33 PM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10009" rel="10009" data-issuekey="VJOE-6" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-6" href="https://vipienovproksi.atlassian.net/browse/VJOE-6">VJOE-6</a>
+</td>
+                                            <td class="summary"><p>
+                Некорректная загрузка ZIP-архива размером менее 200 МБ
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 4:36 PM </td>
+                                            <td class="updated"> 03/ноя/26 4:33 PM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10010" rel="10010" data-issuekey="VJOE-7" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-7" href="https://vipienovproksi.atlassian.net/browse/VJOE-7">VJOE-7</a>
+</td>
+                                            <td class="summary"><p>
+                Некорректное отображение кириллицы в пути и имени файла после импорта проекта
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 4:49 PM </td>
+                                            <td class="updated"> 03/ноя/26 4:33 PM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10011" rel="10011" data-issuekey="VJOE-8" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-8" href="https://vipienovproksi.atlassian.net/browse/VJOE-8">VJOE-8</a>
+</td>
+                                            <td class="summary"><p>
+                Отсутствует окно подтверждения при удалении заметки о проекте
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Lowest
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 5:01 PM </td>
+                                            <td class="updated"> 30/окт/26 10:38 AM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10012" rel="10012" data-issuekey="VJOE-9" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-9" href="https://vipienovproksi.atlassian.net/browse/VJOE-9">VJOE-9</a>
+</td>
+                                            <td class="summary"><p>
+                Некорректное изменение масштаба дерева проекта
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 5:17 PM </td>
+                                            <td class="updated"> 03/ноя/26 4:33 PM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10013" rel="10013" data-issuekey="VJOE-10" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-10" href="https://vipienovproksi.atlassian.net/browse/VJOE-10">VJOE-10</a>
+</td>
+                                            <td class="summary"><p>
+                Отсутствует кнопка отображения пароля на экране регистрации
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 5:25 PM </td>
+                                            <td class="updated"> 30/окт/26 10:38 AM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10014" rel="10014" data-issuekey="VJOE-11" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-11" href="https://vipienovproksi.atlassian.net/browse/VJOE-11">VJOE-11</a>
+</td>
+                                            <td class="summary"><p>
+                Отсутствует кнопка отображения пароля на экране входа
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 5:31 PM </td>
+                                            <td class="updated"> 30/окт/26 10:38 AM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10015" rel="10015" data-issuekey="VJOE-12" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-12" href="https://vipienovproksi.atlassian.net/browse/VJOE-12">VJOE-12</a>
+</td>
+                                            <td class="summary"><p>
+                Некорректный результат поиска несуществующего файла или сущности в дереве проекта
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 5:42 PM </td>
+                                            <td class="updated"> 03/ноя/26 4:33 PM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+
+
+                <tr id="issuerow10016" rel="10016" data-issuekey="VJOE-13" class="issuerow">
+                                            <td class="issuetype">    Дефект
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="VJOE-13" href="https://vipienovproksi.atlassian.net/browse/VJOE-13">VJOE-13</a>
+</td>
+                                            <td class="summary"><p>
+                Отсутствует кнопка отображения пароля на экране восстановления пароля
+    </p>
+</td>
+                                            <td class="assignee">            vemarin2
+    </td>
+                                            <td class="reporter">            MICHAIL
+    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="created"> 27/окт/26 5:58 PM </td>
+                                            <td class="updated"> 03/ноя/26 4:33 PM </td>
+                                            <td class="duedate">    03/ноя/26
+</td>
+                    </tr>
+        </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="11"><font size="1">
+        Полученный Sat Nov 07 10:48:27 UTC 2026 MICHAIL используя JIRA 1001.0.0-SNAPSHOT#100295-rev:30f301faa123fbef7f33006c52a9db372ad7afa7.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
